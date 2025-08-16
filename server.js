@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+const path = require('path'); // pathモジュールを追加
 
 const app = express();
 const server = http.createServer(app);
@@ -24,7 +25,14 @@ let timerState = {
 
 let timerInterval = null;
 
-app.use(express.static('public'));
+// 静的ファイルを提供するディレクトリを絶対パスで指定
+app.use(express.static(path.join(__dirname, 'public')));
+
+// /adminへのアクセスを/admin.htmlにリダイレクト
+app.get('/admin', (req, res) => {
+    res.redirect('/admin.html');
+});
+
 
 io.on('connection', (socket) => {
     console.log('A user connected');
