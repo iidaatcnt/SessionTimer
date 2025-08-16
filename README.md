@@ -1,14 +1,30 @@
 # SessionTimer
 
-This is a simple timer for managing consultation meetings.
+## 概要
 
-## Features
+相談会や複数セッションからなるイベント向けに設計された、シンプルなWebベースの時間管理タイマーです。イベント全体の残り時間と、現在のセッションの残り時間を同時に表示し、円滑な進行をサポートします。
 
-- A total timer for the entire event (2 hours).
-- A session timer for each consultation (20 minutes).
-- Controls to start, pause, reset, and skip to the next session.
+## 主な機能
 
-## Usage
+- **全体タイマー:** イベント全体の残り時間（初期値: 2時間）を表示します。
+- **セッションタイマー:** 各相談枠の残り時間（初期値: 20分）を大きく表示します。
+- **シンプルな操作パネル:**
+    - `Start`: タイマーを開始します。
+    - `Pause`: タイマーを一時停止します。
+    - `Reset`: すべてのタイマーを初期状態に戻します。
+    - `Next`: 現在のセッションを終了し、次のセッション（20分）を開始します。
 
-1.  Clone the repository.
-2.  Open the `index.html` file in your web browser.
+## 使い方
+
+1.  このリポジトリをクローン、またはZIPファイルをダウンロードします。
+2.  お使いのWebブラウザで `index.html` ファイルを開くだけで、すぐに利用できます。
+
+特別なインストール作業は必要ありません。
+
+## 使用技術
+
+- HTML
+- CSS
+- JavaScript
+
+外部ライブラリやフレームワークには依存していません。
