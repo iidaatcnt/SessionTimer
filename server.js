@@ -9,7 +9,9 @@ const io = socketIo(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
-  }
+  },
+  transports: ["polling", "websocket"],
+  allowEIO3: true
 });
 
 const PORT = process.env.PORT || 3000;
