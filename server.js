@@ -35,29 +35,35 @@ app.get('/admin', (req, res) => {
 
 
 io.on('connection', (socket) => {
-    console.log('A user connected');
+    console.log(`A user connected with socket ID: ${socket.id}`);
     // Send the current state to the new user
     socket.emit('timeUpdate', timerState);
 
     socket.on('start', () => {
+        console.log(`Received 'start' event from ${socket.id}`);
         if (timerState.isPaused) {
-            console.log('Timer started');
+            console.log('Timer state is paused, starting timer...');
             timerState.isPaused = false;
             timerInterval = setInterval(tick, 1000);
+        } else {
+            console.log('Timer is already running, ignoring "start" event.');
         }
     });
 
     socket.on('pause', () => {
+        console.log(`Received 'pause' event from ${socket.id}`);
         if (!timerState.isPaused) {
-            console.log('Timer paused');
+            console.log('Timer state is running, pausing timer...');
             timerState.isPaused = true;
             clearInterval(timerInterval);
             io.emit('timeUpdate', timerState);
+        } else {
+            console.log('Timer is already paused, ignoring "pause" event.');
         }
     });
 
     socket.on('reset', () => {
-        console.log('Timer reset');
+        console.log(`Received 'reset' event from ${socket.id}`);
         timerState.isPaused = true;
         clearInterval(timerInterval);
         timerState.totalTime = TOTAL_SECONDS;
@@ -66,17 +72,18 @@ io.on('connection', (socket) => {
     });
 
     socket.on('next', () => {
-        console.log('Next session');
+        console.log(`Received 'next' event from ${socket.id}`);
         timerState.sessionTime = SESSION_SECONDS;
         io.emit('timeUpdate', timerState);
     });
 
     socket.on('disconnect', () => {
-        console.log('User disconnected');
+        console.log(`User with socket ID ${socket.id} disconnected`);
     });
 });
 
 function tick() {
+    console.log('Tick! Current state:', timerState);
     if (timerState.totalTime > 0) {
         timerState.totalTime--;
         timerState.sessionTime--;
@@ -87,6 +94,7 @@ function tick() {
             timerState.sessionTime = SESSION_SECONDS;
         }
     } else {
+        console.log('Total time reached zero. Stopping timer.');
         timerState.isPaused = true;
         clearInterval(timerInterval);
     }
