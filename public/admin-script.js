@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io("https://session-timer-beta.vercel.app");
 
 const totalTimerDisplay = document.getElementById('total-timer');
 const sessionTimerDisplay = document.getElementById('session-timer');
