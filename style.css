@@ -1,0 +1,66 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.timer-container {
+    text-align: center;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.timer-display {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+#total-timer {
+    font-size: 2em;
+    color: #666;
+}
+
+#session-timer {
+    font-size: 4em;
+    font-weight: bold;
+    color: #333;
+}
+
+.buttons button {
+    font-size: 1.2em;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#start-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#pause-btn {
+    background-color: #ff9800;
+    color: white;
+}
+
+#reset-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+#next-btn {
+    background-color: #2196F3;
+    color: white;
+}
